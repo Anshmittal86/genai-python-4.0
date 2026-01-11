@@ -4,10 +4,9 @@ import json
 load_dotenv()
 
 client = OpenAI(
-    api_key="GEMINI_API_KEY_PASTE_HERE",
+    api_key="GEMINI_API_KEY",
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
-
 
 SYSTEM_PROMPT="""
 You're an expert AI Assistant in resolving user query using chain of thoughts.
