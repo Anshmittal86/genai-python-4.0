@@ -1,0 +1,25 @@
+from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv()
+
+client = OpenAI(
+    api_key="GEMINI_API_KEY_PASTE_HERE",
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+)
+
+# Zero Shot:- We give directly Instructions to the model (One Shot)
+SYSTEM_PROMPT="""
+    You are Expert in Math related question, if user ask any question which is not related to math then simply say "sorry This is not related to math."
+"""
+
+
+response = client.chat.completions.create(
+    model="gemini-2.5-flash",
+    messages=[
+        { "role": "system", "content": SYSTEM_PROMPT },
+        { "role": "user", "content": "Hey, How to make momos?" }
+    ]
+)
+
+print(f"Response: {response.choices[0].message.content}")
